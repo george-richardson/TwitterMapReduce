@@ -8,7 +8,7 @@
 	<property name="dist" location="dist" />
 
 	<!--<property name="hadoop.version" value="2.0.0-mr1-cdh4.1.2" /> -->
-	<property name="hadoop.base.path" value="/root/hadoop/share/hadoop/" />
+	<property name="hadoop.base.path" value="/usr/lib/hadoop/client/" />
 
 
 	<path id="classpath">
