@@ -10,12 +10,12 @@ public class TwitterLengthReducer extends Reducer<IntWritable, IntWritable, Text
 	public void reduce(IntWritable key, Iterable<IntWritable> values, Context context)
 	throws IOException, InterruptedException {
 		int length = 0;
-		int sum = 0;
+		long sum = 0;
 		for (IntWritable value : values) {
 			sum += value.get();
 			length++;
 		}
-		result.set(sum / length);
+		result.set((int) (sum / length));
 		resultKey.set("Average");
 		context.write(resultKey, result);
 	}
