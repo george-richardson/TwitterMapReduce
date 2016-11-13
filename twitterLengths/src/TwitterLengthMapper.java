@@ -8,9 +8,12 @@ public class TwitterLengthMapper extends Mapper<Object, Text, IntWritable, IntWr
 	private final IntWritable one = new IntWritable(1);
 	private IntWritable data = new IntWritable();
 	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-		int lowerBound = (value.toString().length() / 5) * 5;
-		data.set(lowerBound);
-		context.write(data, one);
+		String text = value.toString();
+		if (text.split(";").length == 4) {
+			int lowerBound = (value.toString().length() / 5) * 5;
+			data.set(lowerBound);
+			context.write(data, one);
+		}
 	}
 }
 
