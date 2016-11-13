@@ -18,6 +18,7 @@ public class TwitterTime {
         job.setJarByClass(TwitterTime.class);
         job.setMapperClass(TwitterTimeMapper.class);
         job.setReducerClass(TwitterTimeReducer.class);
+	job.setCombinerClass(TwitterTimeReducer.class);
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
         Path outputPath = new Path(output);

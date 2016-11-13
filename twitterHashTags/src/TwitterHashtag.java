@@ -18,6 +18,7 @@ public class TwitterHashtag {
         job.setJarByClass(TwitterHashtag.class);
         job.setMapperClass(TwitterHashtagMapper.class);
         job.setReducerClass(TwitterHashtagReducer.class);
+	job.setCombinerClass(TwitterHashtagReducer.class);
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
 	job.addCacheFile(new Path(cacheFile).toUri());

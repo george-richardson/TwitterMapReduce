@@ -15,11 +15,13 @@ public class TwitterTimeMapper extends Mapper<Object, Text, Text, IntWritable> {
 	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 		String[] fields = value.toString().split(";");
 		if (fields.length == 4) {
-			long epoch = Long.parseLong(fields[0]);
-			Date tweetDate = new Date(epoch);
-			String dateString = df.format(tweetDate);
-			data.set(dateString);
-			context.write(data, one);
+			try {
+				long epoch = Long.parseLong(fields[0]);
+				Date tweetDate = new Date(epoch);
+				String dateString = df.format(tweetDate);
+				data.set(dateString);
+				context.write(data, one);
+			} catch(Exception e){}
 		}
 	}
 }
